@@ -268,7 +268,7 @@ print(my_list)  # 输出: [1, 2, 3, 4, 5]
 ### 报错
 FileNotFoundError: [Errno 2] No such file or directory:'02a.txt'
 的解决:
-
+##### 右键该文件，复制路径，将\改为/.
 ##### 获取当前文件所在目录
 current_dir = os.path.dirname(os.path.abspath(__file__))
 ##### 切换工作目录到当前文件所在目录
