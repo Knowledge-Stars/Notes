@@ -1,3 +1,31 @@
+## 常用技巧
+1. linspace(-1,1,50) #表示生成从-1到1的均匀的50个数字
+2. rand(n) #表示生成0~1之间的n个随机数（一维数组）；rand(n,m) #表示生成n行m列的随机数组
+```python
+import numpy as np
+from numpy.random import rand
+r=rand(5)
+s=rand(3,5)
+print("rand(5)=",r)
+print("rand(3,5)=",s)
+```
+
+
+
+
+### 输入输出函数
+* 基本输出
+print("a","b","c",sep='、',end=' ')
+其中sep表示分隔符号，end表示以什么结尾。
+* 带有参数行
+print("a="%(参数行))
+***%s表示输出字符串，%d表示整数，%f表示浮点数。***
+例如：
+name=衬衫;price=9.15
+print("%s的价格是%f"%(name,price))
+或者：print("{}的价格是{}".format(name,age))
+
+
 ### while循环：
 ``````python
 a=1
@@ -158,6 +186,28 @@ print(a[0][1])  #输出第零行第一列的值
   del d['haha']  #删除haha那个key
   d['haode']=20  #创建一个key
 ``````
+### 数组
+```python
+import numpy as np
+# 创建示例数组
+a = np.array([[1, 2, 3],
+              [4, 5, 6],
+              [7, 8, 9]])
+b = np.array([[1, 2, 3],
+              [4, 5, 6],
+              [7, 8, 9]])
+# 取出矩阵a的第一行中列索引从0到n-1的所有元素
+result_a = a[0, 0:a.shape[1]]
+# 取出矩阵b的第一行的所有列元素
+result_b = b[0, :]
+print(result_a)
+print(result_b)
+```
+##### 在上面的代码中，使用`np.array`函数创建了示例数组`a`和`b`，然后通过索引操作来实现：
+1. `a[0, 0:a.shape[1]]`表示取出矩阵a的第一行中第0列到第n-1列的所有元素。`a.shape[1]`表示矩阵a的列数，因此可以得到从第0列到第n-1列的连续范围。
+2. `b[0, :]`表示取出矩阵b的第一行的所有列元素。冒号表示取该维度的所有元素，即省略了列的范围。
+通过NumPy库，可以在Python中实现类似MATLAB中的数组操作，并进行各种操作，如切片、筛选等。 NumPy库提供了丰富的函数和方法，可以方便地进行数组和矩阵运算。
+
 ### 模块：
 ``````python
 import time
