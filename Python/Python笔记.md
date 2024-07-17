@@ -6,9 +6,13 @@ import numpy as np
 from numpy.random import rand
 r=rand(5)
 s=rand(3,5)
+t=rand(2,3,4,5,...n)
 print("rand(5)=",r)
 print("rand(3,5)=",s)
+print("rand(2,3,4,5)=",t) #生成4*5的数组，按照2*3的形式输出
 ```
+3. L=np.eye(n)表示生成维数为n的单位阵。
+
 
 
 
