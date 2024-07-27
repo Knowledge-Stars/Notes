@@ -397,4 +397,98 @@ plt.grid(True)
 plt.show()
 ``````
 
+
+
+### 如何编写一个python库并调用？
+编写一个 Python 库并调用其中的函数是一个很好的练习，可以帮助理解模块和包的概念。下面是一个详细的步骤教程，指导你如何创建一个简单的 Python 库，并在另一个 Python 脚本中调用它。
+### 第一步：创建库的结构
+1. **创建目录结构**: 首先，创建一个新的文件夹用于你的库。例如，我们可以将其命名为 `mymathlib`。
+   ```
+   mymathlib/
+   ├── mymath/
+   │   ├── __init__.py
+   │   └── operations.py
+   └── setup.py
+   ```
+   - `mymathlib/` 是库的根文件夹。
+   - `mymath/` 是实际包含代码的文件夹。`__init__.py` 文件表明这是一个 Python 包。
+   - `operations.py` 是我们将定义函数的模块。
+   - `setup.py` 是用于包管理和安装的文件。
+### 第二步：编写函数
+在 `operations.py` 中定义一些基础的数学运算函数。打开 `mymath/operations.py`，并添加以下代码：
+```python
+# mymath/operations.py
+
+def add(x, y):
+    """返回 x 与 y 的和"""
+    return x + y
+
+def subtract(x, y):
+    """返回 x 与 y 的差"""
+    return x - y
+
+def multiply(x, y):
+    """返回 x 与 y 的积"""
+    return x * y
+
+def divide(x, y):
+    """返回 x 除以 y 的商。如果 y 是 0，抛出错误。"""
+    if y == 0:
+        raise ValueError("不能除以 0")
+    return x / y
+```
+### 第三步：创建 `__init__.py`
+在 `__init__.py` 文件中，你可以导入 `operations` 模块中的函数，方便用户直接导入。
+```python
+# mymath/__init__.py
+from .operations import add, subtract, multiply, divide
+```
+### 第四步：设置 `setup.py`, ***里面的name必须为英文！***
+在 `setup.py` 文件中，定义包的配置信息。打开 `setup.py`，并添加以下内容：
+```python
+# setup.py
+from setuptools import setup, find_packages
+setup(
+    name='mymathlib',
+    version='0.1',
+    packages=find_packages(),
+    description='一个简单的数学运算库',
+    author='你的名字',
+    author_email='你的邮箱',
+    url='https://github.com/yourname/mymathlib',  # 如果有的话
+)
+```
+### 第五步：安装你的库
+在命令行进入到 `mymathlib` 文件夹，然后运行以下命令安装库：
+```bash
+pip install .
+```
+这将在你的 Python 环境中安装该库。
+### 第六步：创建一个示例脚本来调用库，***from的必须为包含函数文件的文件夹！***
+在库的外面创建一个新的 Python 脚本，比如 `example.py`，用于调用上面创建的库。内容如下：
+```python
+# example.py
+from mymath import add, subtract, multiply, divide
+def main():
+    print("加法：", add(10, 5))
+    print("减法：", subtract(10, 5))
+    print("乘法：", multiply(10, 5))
+    print("除法：", divide(10, 5))
+if __name__ == "__main__":
+    main()
+```
+### 第七步：运行示例脚本
+在命令行中，导航到包含 `example.py` 的目录，运行以下命令：
+```bash
+python example.py
+```
+你应该会看到类似如下的输出.
+```
+加法： 15
+减法： 5
+乘法： 50
+除法： 2.0
+```
+### 总结
+你已经成功创建了一个简单的 Python 库，并在一个脚本中调用了它的函数。这一过程涉及了文件结构的组织、基本的库功能实现，以及如何使用 `setup.py` 进行简单的包管理。希望这个教程对你有所帮助！
 可修改，添加内容，20240610
