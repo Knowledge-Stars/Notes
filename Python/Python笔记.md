@@ -91,6 +91,75 @@ print(a)
 
 * **说白了，定义一个类lei，可以通过lei.fun调用里面的各个函数，如果想在其他函数里面调用这些函数里面的参数，需要调用self.para**
 
+* **<span style="color:#AA33FF">固定套路：我的类里面的__init__函数对类进行初始化，通过指定self和其他对象(选填)来初始化，然后在__init__函数下面self.duixiang来初始化**
+* **调用类的时候传入的参数是__init__除了self之外的参数**
+```python
+import numpy as np
+
+#定义激活函数
+def sigmoid(x):
+    return 1/(1+np.exp(-x))
+
+class neuron:
+    def __init__(self , weights , bias):
+        self.weights = weights
+        self.bias = bias
+        
+    def feedforward(self , inputs):
+        #重复上述前向传播计算过程
+        total = np.dot(self.weights , inputs) + self.bias
+        return sigmoid(total)
+
+# w1=0 , w2=1
+weights = np.array([0,1])
+bias = 4
+
+######前面__init__函数传入了weights和bias参数，这里就要输入这些参数######
+n = neuron(weights , bias)
+
+#x1=2 , x2=3
+x = np.array([2,3])
+print('前向传播计算结果为:\n',n.feedforward(x))
+```
+
+```python
+import numpy as np
+
+class twoNN:
+    '''
+    定义了一个网络：
+    * 两个输入
+    * 一个隐层，包含两个神经元(h1 , h2)
+    * 一个输出层o1
+    * 权重均为$w=[0,1]$
+    * 偏置项均为0
+    '''
+    def __init__(self):
+        self.weights = np.array([0,1])
+        self.bias = 0
+        
+        #上面定义了一个neuron类
+        self.h1 = neuron(weights , bias)
+        self.h2 = neuron(weights , bias)
+        self.o1 = neuron(weights , bias)
+        
+    def feedforward(self , x):
+        out_h1 = self.h1.feedforward(x)
+        out_h2 = self.h2.feedforward(x)
+        
+        #o1的输入是h1和h2的输出
+        out_o1 = self.o1.feedforward(np.array([out_h1 , out_h2]))
+        
+        return out_o1
+
+######前面的__init__函数除self外没有其它参数，这里不需要再传入######
+x = np.array([2,3])
+network = twoNN(w,0)
+print(network.feedforward(x))
+```
+
+
+
 ``````python
 class Calculator:
     name='Nice Calculator'
