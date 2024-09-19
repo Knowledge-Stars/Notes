@@ -89,7 +89,7 @@ print(a)
 ``````
 #### 类：
 
-* 说白了，定义一个类lei，可以通过lei.fun调用里面的各个函数，如果想调用这些函数里面的参数，需要调用lei.self.para
+* **说白了，定义一个类lei，可以通过lei.fun调用里面的各个函数，如果想在其他函数里面调用这些函数里面的参数，需要调用self.para**
 
 ``````python
 class Calculator:
