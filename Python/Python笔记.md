@@ -88,6 +88,9 @@ a=file.read()
 print(a)
 ``````
 #### 类：
+
+* 说白了，定义一个类lei，可以通过lei.fun调用里面的各个函数，如果想调用这些函数里面的参数，需要调用lei.self.para
+
 ``````python
 class Calculator:
     name='Nice Calculator'
@@ -96,7 +99,7 @@ class Calculator:
         result=x+y
         print(result)
 ``````
-#### 当我们调用这个类，先把类赋给个体：
+#### 当我们调用这个类，先把类赋给对象：
 lei=Calculator()
 #### 然后再调用这个类的一些属性：
 print(lei.name)
@@ -115,7 +118,7 @@ class Calculator:
 def __init__(self,name,price,hight):
     self.na=name  #自定义属性，定义后可以覆盖固有属性 
     self.pr=price
-    self.hi=hight
+    self.hi=height
 ``````
 ### 输入：
 ``````python
