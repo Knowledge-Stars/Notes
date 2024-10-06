@@ -563,4 +563,66 @@ python example.py
 ```
 ### 总结
 你已经成功创建了一个简单的 Python 库，并在一个脚本中调用了它的函数。这一过程涉及了文件结构的组织、基本的库功能实现，以及如何使用 `setup.py` 进行简单的包管理。希望这个教程对你有所帮助！
-可修改，添加内容，20240610
+
+如果你的 `tcn4ts` 库的目录不在 Anaconda 默认的库路径下，可能会影响到模块的导入。为了确保能够成功导入自定义模块，你可以尝试以下方法：
+
+### 1. 将库移动到 Anaconda 的 site-packages 目录
+
+可以将 `tcn4ts` 库移动到 Anaconda 环境的 `site-packages` 目录中。你可以找到 `site-packages` 目录，通常在以下路径：
+
+- **Windows:** `C:\Anaconda3\Lib\site-packages\` 或类似路径
+- **Linux / macOS:** `/home/username/anaconda3/lib/pythonX.X/site-packages/`（其中 `X.X` 是你的 Python 版本，如 `3.8`）
+
+将 `tcn4ts` 文件夹直接复制到 `site-packages` 目录，然后尝试再次导入。
+
+### 2. 使用环境变量临时添加路径
+
+你也可以在 Python 脚本中，动态地将库的路径添加到 `sys.path` 上，以实现临时导入。以下是一个示例：
+
+```python
+import sys
+import os
+
+# 将 tcn4ts 的路径添加到 sys.path 中
+sys.path.append('/path/to/your/tcn4ts')
+
+# 现在可以导入
+import tcn4ts  # 或者 from tcn4ts.tcn import your_function
+```
+
+确保替换 `/path/to/your/tcn4ts` 为你实际的 `tcn4ts` 库的路径。
+
+### 3. 设置 PYTHONPATH 环境变量
+
+你可以设置 `PYTHONPATH` 环境变量，将 `tcn4ts` 的路径添加到 Python 的模块搜索路径中。具体方法如下：
+
+- **Windows:**
+    ```bash
+    set PYTHONPATH=C:\path\to\your\tcn4ts;%PYTHONPATH%
+    ```
+
+- **Linux / macOS:**
+    ```bash
+    export PYTHONPATH=/path/to/your/tcn4ts:$PYTHONPATH
+    ```
+
+设置完后，启动 Python 交互式环境，然后尝试导入库。
+
+### 4. 建立符号链接（Linux / macOS）
+
+如果你使用 Linux 或 macOS，可以考虑在 `site-packages` 目录下建立一个符号链接，指向你的 `tcn4ts` 目录：
+
+```bash
+ln -s /path/to/your/tcn4ts /path/to/anaconda3/lib/pythonX.X/site-packages/tcn4ts
+```
+
+### 5. 确保环境一致
+
+最后，确认你使用的 Anaconda 环境是否正确。如果在不同的 Anaconda 环境中工作，可以通过以下命令管理相应环境：
+
+```bash
+conda activate your_environment_name
+```
+### 总结
+通过以上方法，确保你的库能够被 Python 正确识别并导入。如果你有错误信息或具体问题，可以分享出来，我们可以更进一步排查。
+
