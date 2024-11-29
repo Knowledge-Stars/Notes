@@ -284,6 +284,210 @@ print(result_b)
 2. `b[0, :]`表示取出矩阵b的第一行的所有列元素。冒号表示取该维度的所有元素，即省略了列的范围。
 通过NumPy库，可以在Python中实现类似MATLAB中的数组操作，并进行各种操作，如切片、筛选等。 NumPy库提供了丰富的函数和方法，可以方便地进行数组和矩阵运算。
 
+
+
+## 数学运算
+
+### 序列的常用操作
+1. len() 字符串长度
+2. str.count('a') 找a出现的个数
+3. eval() 把字符串内容算出来
+4. str.find('abc') 找出字符串
+5. str.split(',') 返回按','分割的列表
+6. str.strip() 去除str前后的空格
+7. join() 拼接字符：' '.join(['I','am','Marisa','daze'])
+
+### 索引
+[:a]表示从头开始引用前a个元素
+[a:]表示从索引a开始引用后面的所有元素
+[::a]表示以间隔a引用从头到尾的所有元素
+[:,a]表示取出所有行第a列的元素
+[a,:]表示取出a行所有列的元素
+
+### 服从各种分布的随机数
+在 Python 中，你可以使用 `random` 模块或者 `numpy` 库来生成随机数。这两种方法都可以用于生成特定区间的均匀分布随机数，以及其他分布的随机数。下面是详细的介绍。
+
+### 1. 生成从-1到1之间的均匀分布的随机数
+
+#### 使用 `random` 模块
+
+你可以使用 `random.uniform(a, b)` 函数，其中 `a` 和 `b` 是你想要生成随机数的区间：
+
+```python
+import random
+
+random_number = random.uniform(-1, 1)
+print(random_number)
+```
+
+#### 使用 `numpy`
+
+如果你使用的是 `numpy` 库，可以使用 `numpy.random.uniform(a, b, size)` 函数：
+
+```python
+import numpy as np
+
+random_numbers = np.random.uniform(-1, 1, size=10)  # 生成10个随机数
+print(random_numbers)
+```
+
+### 2. 生成指定区间服从指定分布的随机数
+
+#### 生成均匀分布随机数
+
+若要生成均匀分布的随机数，可以使用上述方法，只需更改区间值。
+
+#### 生成正态分布随机数
+`numpy` 提供了很多其他分布的随机数生成函数。例如：
+
+- 正态分布：`np.random.normal(mu, sigma, size=10)`
+- 二项分布：`np.random.binomial(n, p, size)`
+- 指数分布：`np.random.exponential(scale, size)`
+- 伽马分布：`np.random.gamma(shape, scale, size)`
+
+
+#### 保留指定位数的小数
+print("sin","%.2f"%x,"=","%.3f"%s)
+
+
+### 矩阵操作
+```python
+import numpy as np
+# 输入一个矩阵
+matrix = np.array([[1, 2, 3],
+                   [4, 5, 6],
+                   [7, 8, 9]])
+# 对矩阵进行转置操作
+transposed_matrix = matrix.T
+print(transposed_matrix)
+
+# 求矩阵的逆矩阵
+inverse_matrix = np.linalg.inv(matrix)
+print(inverse_matrix)
+
+# 输入两个矩阵
+matrix1 = np.array([[1, 2],
+                    [3, 4]])
+matrix2 = np.array([[5, 6],
+                    [7, 8]])
+# 矩阵相乘操作
+product_matrix = np.dot(matrix1, matrix2)
+print(product_matrix)
+
+
+# 定义一个线性变换矩阵
+linear_transform_matrix = np.array([[2, 0],
+                                    [0, 2]])
+# 进行线性变换操作
+transformed_matrix = np.dot(matrix, linear_transform_matrix)
+print(transformed_matrix)
+```
+
+
+### 堆栈创建和操作
+在Python中，可以使用内置的列表（list）来实现堆栈（Stack），因为列表提供了方便的`append()`和`pop()`方法，可以轻松地进行堆栈的入栈和出栈操作。
+以下是一个简单的堆栈实现示例：
+```python
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def is_empty(self):
+        """检查堆栈是否为空"""
+        return len(self.items) == 0
+
+    def push(self, item):
+        """入栈"""
+        self.items.append(item)
+
+    def pop(self):
+        """出栈，返回最上面的元素"""
+        if not self.is_empty():
+            return self.items.pop()
+        else:
+            raise IndexError("pop from an empty stack")
+
+    def peek(self):
+        """查看最上面的元素，但不移除"""
+        if not self.is_empty():
+            return self.items[-1]
+        else:
+            raise IndexError("peek from an empty stack")
+
+    def size(self):
+        """返回堆栈的大小"""
+        return len(self.items)
+
+# 示例用法
+if __name__ == "__main__":
+    stack = Stack()
+
+    stack.push(1)
+    stack.push(2)
+    stack.push(3)
+
+    print("当前堆栈的大小:", stack.size())  # 输出: 3
+    print("最上面的元素:", stack.peek())      # 输出: 3
+    print("出栈元素:", stack.pop())            # 输出: 3
+    print("出栈元素:", stack.pop())            # 输出: 2
+    print("堆栈是否为空:", stack.is_empty())    # 输出: False
+    stack.pop()  # 出栈最后一个元素
+    print("堆栈是否为空:", stack.is_empty())    # 输出: True
+```
+在这个示例中，我们实现了一个简单的堆栈类，包含以下功能：
+- `push(item)`: 将元素添加到堆栈顶。
+- `pop()`: 移除并返回堆栈顶的元素。
+- `peek()`: 返回堆栈顶的元素，但不移除它。
+- `is_empty()`: 检查堆栈是否为空。
+- `size()`: 获取堆栈中元素的数量。
+通过使用这个堆栈类，你可以进行基本的堆栈操作。
+
+
+
+### 读取csv文件数据
+#### 读取为字符串string
+下面的split即转化为string,asarray将string转化为浮点数。
+```python
+data = []
+data_string = []
+data_float = []
+for line in open('data.csv'):
+  data_string.append(line.strip().split(','))
+  data_float = np.asarray(data_string, float)
+print(data_string)
+print(data_float)
+```
+***loadtxt直接转化为数字***
+```python
+  data = np.loadtxt('data.csv', delimiter=',')
+  print(data)
+```
+***提取文件数据并求中位数平均数,保留1位小数***
+```python
+import numpy as np
+data = np.loadtxt('data.csv', delimiter=',')
+a ,b = np.mean(data) , np.median(data)
+c = np.round(a , 1)
+d = np.round(b , 1)
+```
+***将多个文件数据加起来求平均***
+import numpy as np
+```python
+def mean_datasets(filenames):
+#文件的个数n
+  n = len(filenames)
+  if n > 0:
+#按照索引来读取文件
+    data = np.loadtxt(filenames[0], delimiter=',')
+#文件按照数组读出来，可以像矩阵一样直接相加！
+    for i in range(1,n):
+      data += np.loadtxt(filenames[i], delimiter=',')
+    data_mean = data/n
+    return np.round(data_mean, 1)
+```
+
+
+
 ### 模块：
 ``````python
 import time
