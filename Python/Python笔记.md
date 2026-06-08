@@ -89,7 +89,7 @@ print(a)
 ``````
 #### 类：
 
-* **说白了，定义一个类lei，可以通过lei.fun调用里面的各个函数，如果想在其他函数里面调用这些函数里面的参数，需要调用self.para**
+* **说白了，定义一个类: class，可以通过class.fun调用里面的各个函数，如果想在其他函数里面调用这些函数里面的参数，需要调用self.para**
 
 * **<span style="color:#AA33FF">固定套路：我的类里面的__init__函数对类进行初始化，通过指定self和其他对象(选填)来初始化，然后在__init__函数下面self.duixiang来初始化**
 * **调用类的时候传入的参数是__init__除了self之外的参数**
@@ -169,14 +169,14 @@ class Calculator:
         print(result)
 ``````
 #### 当我们调用这个类，先把类赋给对象：
-lei=Calculator()
+`class=Calculator()`
 #### 然后再调用这个类的一些属性：
-print(lei.name)
+`lass.name`
 #### 输出的是这个类的名字Nice Calculator
 ``````python
-print(lei.price)
+print(class.price)
 #输出的是5
-lei.fun(5,6)
+class.fun(5,6)
 #输出的是11
 ``````
 #### 类的init功能：
@@ -347,7 +347,7 @@ print(random_numbers)
 
 
 #### 保留指定位数的小数
-print("sin","%.2f"%x,"=","%.3f"%s)
+`print("sin","%.2f"%x,"=","%.3f"%s)`
 
 
 ### 矩阵操作
