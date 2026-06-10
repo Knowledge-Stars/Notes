@@ -128,7 +128,7 @@ USA
 ```
 
 
-### 表格
+### 表格`<table> </table>`
 
 * `tr`: table row 的缩写，表格的一行。
 * `td`: table data 的缩写，数据单元格。
@@ -157,7 +157,7 @@ USA
   </tbody>
 </table>
 
-### 列表
+### 列表`<ul> </ul>和<ol> </ol>`
 
 #### 无序列表
 
@@ -195,3 +195,57 @@ USA
 <dt>Water</dt>
 <dd>- H2O</dd>
 </dl>
+
+## 表单`<form> </form>`
+
+表单用于收集用户的输入信息。
+* `<form>`创建表单，**属性：**`action` 属性定义了表单数据提交的目标 URL，`method` 属性定义了提交数据的 HTTP 方法（这里使用的是 "post"）。
+* `<label>` 添加标签，提高可访问性。
+* `<input>` 创建文本输入框、密码框等。`type` 属性定义了输入框的类型，`id` 属性用于关联 
+* `<label>` 元素，`name` 属性用于标识表单字段。
+* `<select>` 创建下拉列表，而 `<option>` 元素用于定义下拉列表中的选项。
+
+**例子：**
+```html
+<form action="/" method="post">
+    <!-- 文本输入框 -->
+    <label for="name">用户名:</label>
+    <input type="text" id="name" name="name" required>
+
+    <br>
+
+    <!-- 密码输入框，显示为圆点 -->
+    <label for="password">密码:</label>
+    <input type="password" id="password" name="password" required>
+
+    <br>
+
+    <!-- 单选按钮 -->
+    <label>性别:</label>
+    <input type="radio" id="male" name="gender" value="male" checked>
+    <label for="male">男</label>
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">女</label>
+
+    <br>
+
+    <!-- 复选框 -->
+    <input type="checkbox" id="subscribe" name="subscribe" checked>
+    <label for="subscribe">订阅推送信息</label>
+
+    <br>
+
+    <!-- 下拉列表 -->
+    <label for="country">国家:</label>
+    <select id="country" name="country">
+        <option value="cn">CN</option>
+        <option value="usa">USA</option>
+        <option value="uk">UK</option>
+    </select>
+
+    <br>
+
+    <!-- 提交按钮 -->
+    <input type="submit" value="提交">
+</form>
+```
