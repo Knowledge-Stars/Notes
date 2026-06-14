@@ -249,3 +249,88 @@ USA
     <input type="submit" value="提交">
 </form>
 ```
+<br><br>
+
+# CSS笔记
+## 调用CSS的两种方法：
+
+## 1. 通过<link>的属性href来引用写好的css文件
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的 CSS 练习</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ 
+    <div class="card">
+        <h1>Hello, CSS!</h1>
+        <p>这是我用 VS Code 写的第一个样式卡片。</p>
+        <button>点击我</button>
+    </div>
+ 
+</body>
+</html>
+```
+
+## 2. 也可以在html中自定义样式来采用样式，但是在html中用`<style> </style>`包起来
+
+```html
+<style>
+p  <!--指定段落的css格式>
+{
+	color:red;
+	text-align:center;
+} 
+</style>
+</head>
+
+<body>
+<p>Hello World!</p>
+```
+
+## CSS 的id选择器：只渲染指定区域的样式，前面加`#`，`id='id的名字'`
+
+```html
+<style>
+#para1
+{
+	text-align:center;
+	color:red;
+} 
+</style>
+
+<p id="para1">Hello World!</p>
+<p>这个段落不受该样式的影响。</p>
+```
+
+## class选择器：一次性渲染多个区域的样式
+`.center {text-align:center;}`
+
+指定内容渲染样式，如指定段落就`p.`：
+
+`p.center {text-align:center;}`
+
+## CSS背景
+* **背景颜色`body {background-color:#b0c4de;}`**
+
+* **其他部分颜色：**
+```css
+h1 {background-color:#6495ed;}
+p {background-color:#e0ffff;}
+div {background-color:#b0c4de;}
+```
+
+* **图像重复和位置：**
+
+`background-repeat:repeat-x;`或者`no-repeat;`，位置：`background-position:right top;`，固定：`background-attachment:fixed;`
+
+
+
+
+
+
