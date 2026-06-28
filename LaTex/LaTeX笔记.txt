@@ -15,6 +15,7 @@
   \begin{titlepage}
   \maketitle
   \end{titlepage}
+
 4.\section{条分缕析1.，2.，3....}
   \subsection{更加细分1.1,1.2，...}
 5.中文使用。
@@ -67,6 +68,7 @@
 绝对值：${\lvert \Psi \rvert}^2$
 大于等于： \geq
 小于等于：\leq
+不等于：\neq
 约等于：\approx
 定积分：$\int_{a}^{b} x^2 dx$
 二重积分：$\iint_V f(u,v) \,du\,dv$ 在公式编辑里面空格用“\,”
@@ -83,6 +85,55 @@
 箭头上写字：X \stackrel{F}{\longrightarrow} Y
 推出符号：\Rightarrow   \Left~
 左右矢<>： \langle   \rangle
+
+* 方程编号：
+\begin{equation}
+\end{equation}
+
+
+* 跨行大括号：$ \Bigg{ $
+$$f(x) =
+\left\{
+\begin{array}{ll}
+x^2, & x \ge 0 \\
+-x, & x < 0
+\end{array}
+\right
+$$
+
+
+* 蓝色方块内写字：
+\begin{mdframed}[backgroundcolor=blue!10] 
+
+\end{mdframed}
+
+* 橙色阴影内写字：
+\begin{shaded}
+
+\end{shaded}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
